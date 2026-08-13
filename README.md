@@ -1,28 +1,46 @@
-# inventory-anomaly-detection
-# Predictive Inventory Obsolescence Detection
+# Predictive Inventory Risk Detection
 
-## Business Impact: Reduced obsolescence reserves and identified at-risk stock.
+> Executive decision-support portfolio project using synthetic data.
 
-### Project Overview
-This project develops a machine learning system to proactively identify SKUs at high risk of becoming obsolete. By analyzing patterns in sales velocity, stock levels, and inventory age, the system flags items for review before they require significant write-offs.
+![Illustrative inventory-risk preview](docs/project-preview.png)
 
-### The S.T.A.R. Story
+## Business objective
 
-*   **(S) Situation:** Undetected slow-moving and obsolete inventory was causing hidden losses and excessive reserves, tying up working capital.
-*   **(T) Task:** Build an anomaly detection model to flag at-risk SKUs (no sales >90 days, high months of cover, high aged stock ratio) to enable proactive management.
-*   **(A) Action:**
-    *   Engineered features from inventory data: `days_since_last_sale`, `months_of_cover`, `age_180_days_ratio`, `sales_stock_ratio`.
-    *   Built an unsupervised ML model (Isolation Forest) to identify SKUs with anomalous risk profiles.
-    *   Developed a visualization to show risk across two key dimensions and inventory value.
-    *   Outputs a prioritized list for the supply chain team to investigate.
-*   **(R) Result:** Improved inventory health, reduced obsolescence reserves by targeting actions, and freed up working capital.
+Help Finance, Operations, and Supply Chain identify inventory requiring management attention before working capital becomes trapped or obsolescence risk increases. The framework prioritizes review candidates while keeping the final business decision with domain owners.
 
-### How to Run
-1.  Upload the `inventory_obsolescence_detection.ipynb` notebook to [Google Colab](https://colab.research.google.com/).
-2.  Run all cells sequentially to generate the dummy data, train the model, and see the results.
-3.  The final output is a prioritized list of high-risk SKUs and a scatter plot for visual analysis.
+## Executive questions supported
 
-### Technologies Used
-*   **Python:** pandas, scikit-learn, numpy, matplotlib, seaborn
-*   **Machine Learning:** Isolation Forest
-*   **Key KPIs:** Days Since Last Sale, Months of Cover, Aged Stock Ratio
+- Which items show unusual combinations of age, sales velocity, and inventory cover?
+- Where should teams focus investigation and action first?
+- Which risk signals are explainable to Finance and operational stakeholders?
+- How should model flags be governed before they influence reserves or purchasing decisions?
+
+## Decision logic
+
+The notebook engineers interpretable inventory-risk features and applies Isolation Forest to identify unusual patterns. The model is used as a prioritization tool, not an automated write-off decision. Flagged items require operational review and documented disposition.
+
+## What the model produces
+
+- Prioritized inventory-review candidates
+- Explainable features such as recency, cover, ageing, and sales-to-stock relationship
+- Visual separation of routine and unusual risk patterns
+- A review workflow for Finance and Supply Chain
+- Clear controls for human validation and exception handling
+
+## Governance and privacy
+
+This is a portfolio demonstration built entirely with synthetic data. It contains no employer, client, SKU, customer, sales, reserve, or inventory information. Model flags are illustrative and should never be treated as automatic accounting or operational decisions.
+
+## Run the notebook
+
+1. Install the packages in `requirements.txt`.
+2. Open `inventory_obsolescence_detection.ipynb` in Jupyter or Google Colab.
+3. Run the notebook from top to bottom to generate the synthetic data, model, and visual review output.
+
+## Technology and analytical methods
+
+Python, pandas, NumPy, scikit-learn, Isolation Forest, matplotlib, seaborn, anomaly detection, working-capital analytics, model governance.
+
+---
+
+Created by [Aftab Khan](https://www.linkedin.com/in/aftabparvezkhan/) as part of a finance, data, and AI decision-intelligence portfolio.
